@@ -1,0 +1,1 @@
+<p class="alert alert-danger" role="alert"><strong>{{$slot}}</strong></p>
