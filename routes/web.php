@@ -24,6 +24,7 @@ use App\Http\Controllers\StudentManagement\ExamTypeController;
 use App\Http\Controllers\StudentManagement\SubjectTypeController;
 use App\Http\Controllers\StudentManagement\AssignSubjectController;
 use App\Http\Controllers\StudentManagement\DesignationController;
+use App\Http\Controllers\StudentReg\AssignStudentRegController;
 
 Route::get('/',[UserController::class,'GoToLoginPage'])->name('home')->middleware(['guest:'.config('fortify.guard')]);
 
@@ -124,4 +125,10 @@ Route::get('designationDelete/{id}',[DesignationController::class,'DeleteDesigna
 //end of Designation management
 
 });//end of prefix setupController
-});
+Route::prefix('student')->group(function(){
+//student Registration
+Route::resource('registration',AssignStudentRegController::class);
+//end of student registration
+}); //end of Student Prefix
+
+});//end of Auth Middleware

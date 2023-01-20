@@ -27,20 +27,22 @@
 			<span>Dashboard</span>
           </a>
         </li>  
-		
-        <li class="treeview {{($prefix==='/user' ? 'active' : '')}}">
-          <a href="#">
-            <i data-feather="message-circle"></i>
-            <span>User Manager</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-right pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li class="{{($route=='user.view' ? 'active' : '')}}"><a href="{{ route('user.view') }}"><i class="ti-more"></i>View User</a></li>
-            <li class="{{($route=='user.create' ? 'active' : '')}}"><a href="{{ route('user.create') }}"><i class="ti-more"></i>Add User</a></li>
-          </ul>
-        </li> 
+		@if (Auth::user()->role=='Admin')
+    <li class="treeview {{($prefix==='/user' ? 'active' : '')}}">
+      <a href="#">
+        <i data-feather="message-circle"></i>
+        <span>User Manager</span>
+        <span class="pull-right-container">
+          <i class="fa fa-angle-right pull-right"></i>
+        </span>
+      </a>
+      <ul class="treeview-menu">
+        <li class="{{($route=='user.view' ? 'active' : '')}}"><a href="{{ route('user.view') }}"><i class="ti-more"></i>View User</a></li>
+        <li class="{{($route=='user.create' ? 'active' : '')}}"><a href="{{ route('user.create') }}"><i class="ti-more"></i>Add User</a></li>
+      </ul>
+    </li> 
+    @endif
+       
 		  
         <li class="treeview {{($prefix==='/profile' ?'active':'')}}">
           <a href="#">
@@ -76,8 +78,24 @@
             <li><a href="{{ route('assignsubject.index') }}"><i class="ti-more"></i>Assigned Subject</a></li>
             <li><a href="{{ route('designation.index') }}"><i class="ti-more"></i>Manage Designations</a></li>
           </ul>
-        </li> 		  
-		 
+        </li> 
+        
+        <!--student Managemet--->
+       
+        <li class="treeview {{($prefix==='/student' ? 'active' : '')}}">
+          <a href="#">
+            <i data-feather="user"></i>
+            <span>Student Registration</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="{{($route=='registration.index' ? 'active' : '')}}"><a href="{{ route('registration.index') }}"><i class="ti-more"></i>Student View</a></li>
+            <li class="{{($route=='registration.create' ? 'active' : '')}}"><a href="{{ route('registration.create') }}"><i class="ti-more"></i>Add Student</a></li>
+          </ul>
+        </li> 
+         {{-- end of studentManagemet --}}
         <li class="header nav-small-cap">User Interface</li>
 		  
         <li class="treeview">
