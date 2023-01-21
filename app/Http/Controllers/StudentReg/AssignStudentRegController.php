@@ -240,4 +240,34 @@ $discount->save();
     {
         //
     }
+    //for promotion
+    public function PromoteStudent($stu_id){
+        $data['title_page']="Promote Student To Next Class";
+        $data['years']=Year::latest()->get();
+        $data['classes']=ClassManagement::latest()->get();
+        $data['shifts']=ShiftManagement::latest()->get();
+        $data['groups']=StudentGroup::latest()->get();
+        $data['editData']=AssignStudent::with(['UserName','discount'])->where('stu_id',$stu_id)->first();
+       // dd($data['editData']->toArray());
+        return view($this->path.'promoteStu',$data);
+    }
+    public function UpdatePromoteStudent(Request $request,$stu_id){
+    DB::transaction(function() use($request,$stu_id){
+        $user=User::where('id',$stu_id)->first();
+
+        $assign=AssignStudent::where('id',$request->id)->where('stu_id',$stu_id)->first();
+        $assign->year_id=$request->year_id;
+        $assign->class_id=$request->class_id;
+        $assign->group_id=$request->group_id;
+        $assign->shift_id=$request->shift_id;
+        $assign->save();
+
+        //Now for discount
+        $dis=Discount::where('ass_stu_id',$request->id)->first();
+        $dis->discount=$request->discount;
+        $dis->save();
+    });
+    $data=$this->noti->ShowNotification('Student promoted Successfully','info');
+    return redirect()->route('registration.index')->with($data);
+    }
 }

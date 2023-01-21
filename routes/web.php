@@ -128,6 +128,8 @@ Route::get('designationDelete/{id}',[DesignationController::class,'DeleteDesigna
 Route::prefix('student')->group(function(){
 //student Registration
 Route::resource('registration',AssignStudentRegController::class);
+Route::get('studentpromote/{stu_id}',[AssignStudentRegController::class, 'PromoteStudent'])->name('registration.promote');
+Route::post('studentpromote/{stu_id}',[AssignStudentRegController::class, 'UpdatePromoteStudent'])->name('registration.updatepromote');
 //end of student registration
 }); //end of Student Prefix
 
