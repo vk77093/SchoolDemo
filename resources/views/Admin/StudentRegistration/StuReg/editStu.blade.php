@@ -1,7 +1,7 @@
 @extends('Admin.Backend.Layouts.adminMaster')
 @section('main')
 <x-box-comp>
-    <x-slot name="boxTitle">Register The Student</x-slot>
+    <x-slot name="boxTitle">Edit The Student Data</x-slot>
     <x-slot name="buttonArea">
         <a class="btn btn-app btn-info" href="{{route('registration.index')}}" style="float: right;">
             <i class="fa fa-eye"></i> View Registred Students
@@ -9,6 +9,8 @@
     </x-slot> 
     <form method="post" action="{{route('registration.update',$editData->stu_id)}}" enctype="multipart/form-data">
     @csrf
+    @method('PATCH')
+    <input type="hidden" name="id" value="{{$editData->id}}"/>
     <div class="row">
         <div class="col-sm-4 col-md-4">
             <div class="form-group">
@@ -72,10 +74,10 @@
                 <div class="input-group">
                    <select class="form-control form-select" name="religion" id="religion" required value="{{old('religion')}}">
                     <option selected value disabled>--Select Religion-- {{old('religion')}}</option>
-                    <option value="Hindu">Hindu</option>
-                    <option value="Muslim">Muslim</option>
-                    <option value="Sikh">Sikh</option>
-                    <option value="Christan">Christan</option>
+                    <option value="Hindu" {{($editData->UserName->religion=='Hindu')? 'selected':''}}>Hindu</option>
+                    <option value="Muslim" {{($editData->UserName->religion=='Muslim')? 'selected':''}}>Muslim</option>
+                    <option value="Sikh" {{($editData->UserName->religion=='Sikh')? 'selected':''}}>Sikh</option>
+                    <option value="Christan" {{($editData->UserName->religion=='Christan')? 'selected':''}}>Christan</option>
                   </select>
                 </div>
             </div>
@@ -98,10 +100,10 @@
             <div class="form-group">
                 <h5>Select Year <x-required-sign/></h5>
                 <div class="input-group">
-                   <select class="form-control form-select" name="year_id" id="year_id" required value="{{old('year_id')}}">
+                   <select class="form-control form-select" name="year_id" id="year_id" required>
                     <option selected value disabled>--Select year-- {{old('year_id')}}</option>
                     @foreach ($years as $item)
-                        <option value="{{$item->id}}">{{$item->year_name}}</option>
+                        <option value="{{$item->id}}" {{($editData->YearName->id==$item->id) ? ' selected="selected"' : ''}}>{{$item->year_name}}</option>
                     @endforeach
                   </select>
                 </div>
@@ -114,7 +116,7 @@
                    <select class="form-control form-select" name="class_id" id="class_id" required value="{{old('class_id')}}">
                     <option selected value disabled>--Select Class-- {{old('class_id')}}</option>
                     @foreach ($classes as $item)
-                        <option value="{{$item->id}}">{{$item->class_name}}</option>
+                        <option value="{{$item->id}}" {{($editData->ClassName->id==$item->id) ? ' selected="selected"' : ''}}>{{$item->class_name}}</option>
                     @endforeach
                   </select>
                 </div>
@@ -127,7 +129,7 @@
                    <select class="form-control form-select" name="group_id" id="group_id" required value="{{old('group_id')}}">
                     <option selected value disabled>--Select year-- {{old('group_id')}}</option>
                     @foreach ($groups as $item)
-                        <option value="{{$item->id}}">{{$item->group_name}}</option>
+                        <option value="{{$item->id}}" {{($editData->GroupName->id==$item->id) ? ' selected="selected"' : ''}}>{{$item->group_name}}</option>
                     @endforeach
                   </select>
                 </div>
@@ -142,7 +144,7 @@
                    <select class="form-control form-select" name="shift_id" id="shift_id" required value="{{old('shift_id')}}">
                     <option selected value disabled>--Select Shift-- {{old('shift_id')}}</option>
                     @foreach ($shifts as $item)
-                        <option value="{{$item->id}}">{{$item->shift_name}}</option>
+                        <option value="{{$item->id}}" {{($editData->ShiftName->id==$item->id) ?'selected' :''}}>{{$item->shift_name}}</option>
                     @endforeach
                   </select>
                 </div>
@@ -155,7 +157,7 @@
             </div>
         </div>
         <div class="col-sm-4 col-md-4 mt-2">
-            <img src="{{asset('AdminAsset/UserProfileImage/no_image.jpg')}}" id="showImage" class="rounded avatar-lg img-centered"/>
+            <img src="{{(empty($editData->UserName->profile_photo_path)? url('AdminAsset/UserProfileImage/no_image.jpg') : url($editData->UserName->profile_photo_path))}}" id="showImage" class="rounded avatar-lg img-centered"/>
         </div>
     </div><!--end of 5th row-->
     <div class="mt-2">

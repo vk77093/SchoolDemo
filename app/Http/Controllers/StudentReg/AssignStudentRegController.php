@@ -117,6 +117,7 @@ $user->mname=$request->mname;
 $user->mobile=$request->mobile;
 $user->gender=$request->gender;
 $user->religion=$request->religion;
+$user->address=$request->address;
 $user->dob=date('Y-m-d',strtotime($request->dob));
 if($request->hasFile('profile_photo_path')){
     $image=$request->file('profile_photo_path');
@@ -182,12 +183,51 @@ $dis->save();
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  int  $stu_id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $stu_id)
     {
-        //
+        DB::transaction(function()use($request, $stu_id){
+$user=User::where('id',$stu_id)->first();
+
+$previousImage=$user->profile_photo_path;
+
+$user->name=$request->name;
+$user->email=$request->name.'@gmail.com';
+$user->fname=$request->fname;
+$user->mname=$request->mname;
+$user->mobile=$request->mobile;
+$user->gender=$request->gender;
+$user->religion=$request->religion;
+$user->address=$request->address;
+$user->dob=date('Y-m-d',strtotime($request->dob));
+if($request->hasFile('profile_photo_path')){
+$image=$request->file('profile_photo_path');
+$imageName=date('Y-m-d').$image->getClientOriginalName();
+    Image::make($image)->resize(430,327)->save($this->ImagePath.$imageName);
+    $saveUrl=$this->ImagePath.$imageName;
+    unlink($previousImage);
+    $user->profile_photo_path=$saveUrl;
+}
+$user->save();
+//Now For Assign Student
+$assign=AssignStudent::where('id',$request->id)->where('stu_id',$stu_id)->first();
+//need to send the hidden value of id from form
+//$assign->stu_id=$user->id;
+$assign->class_id=$request->class_id;
+$assign->year_id=$request->year_id;
+$assign->group_id=$request->group_id;
+$assign->shift_id=$request->shift_id;
+$assign->save();
+$discount=Discount::where('ass_stu_id',$request->id)->first();
+$discount->discount=$request->discount;
+$discount->save();
+
+
+        });
+        $data=$this->noti->ShowNotification('Data Updated Successfully','info');
+        return redirect()->route('registration.index')->with($data);
     }
 
     /**
