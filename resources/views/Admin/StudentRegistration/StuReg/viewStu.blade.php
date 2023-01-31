@@ -63,6 +63,7 @@
                 <th>Image</th>
                 <th>Edit</th>
                 <th>Promote</th>
+                <th>Details</th>
             </x-slot>
             @foreach ($assignedStudents as $item)
                 <td>{{$loop->iteration}}</td>
@@ -79,6 +80,7 @@
                 <td><img src="{{(!empty($item->UserName->profile_photo_path)? url($item->UserName->profile_photo_path) : url('AdminAsset/UserProfileImage/no_image.jpg'))}}" width="30" height="20"></td>
                 <td><a href="{{route('registration.edit',$item->stu_id)}}" class="btn btn-primary"><i class="fa fa-edit"></i></a></td>
                <td> <a href="{{route('registration.promote',$item->stu_id)}}" class="btn btn-danger"><i class="mdi mdi-apple-finder"></i></a></td>
+               <td> <a href="{{route('studentdetails.pdf',$item->stu_id)}}" class="btn btn-danger"><i class="mdi mdi-apple"></i></a></td>
             @endforeach
         </x-data-table-comp>
     </div>

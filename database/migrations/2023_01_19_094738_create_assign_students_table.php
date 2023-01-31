@@ -20,6 +20,7 @@ return new class extends Migration
             $table->foreignId('year_id')->constrained('years');
             $table->foreignId('group_id')->constrained('student_groups');
             $table->foreignId('shift_id')->constrained('shift_management');
+            $table->string('roll_number')->nullable();
             $table->timestamps();
         });
     }

@@ -25,6 +25,7 @@ use App\Http\Controllers\StudentManagement\SubjectTypeController;
 use App\Http\Controllers\StudentManagement\AssignSubjectController;
 use App\Http\Controllers\StudentManagement\DesignationController;
 use App\Http\Controllers\StudentReg\AssignStudentRegController;
+use App\Http\Controllers\StudentReg\RollNumberController;
 
 Route::get('/',[UserController::class,'GoToLoginPage'])->name('home')->middleware(['guest:'.config('fortify.guard')]);
 
@@ -130,7 +131,11 @@ Route::prefix('student')->group(function(){
 Route::resource('registration',AssignStudentRegController::class);
 Route::get('studentpromote/{stu_id}',[AssignStudentRegController::class, 'PromoteStudent'])->name('registration.promote');
 Route::post('studentpromote/{stu_id}',[AssignStudentRegController::class, 'UpdatePromoteStudent'])->name('registration.updatepromote');
+Route::get('generatestudentDetails/{id}',[AssignStudentRegController::class, 'StudentDetailsPDF'])->name('studentdetails.pdf');
 //end of student registration
+Route::get('rollview',[RollNumberController::class, 'RollView'])->name('rollview.view');
+Route::post('assignrolenumber',[RollNumberController::class, 'StudentRoleStore'])->name('assignrolenumber.post');
 }); //end of Student Prefix
 
 });//end of Auth Middleware
+Route::get('getstudents',[RollNumberController::class, 'GetStudent'])->name('jsonfetch.getstudents');
