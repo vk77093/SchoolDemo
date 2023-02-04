@@ -15,4 +15,5 @@ class FeeCategoryAmount extends Model
     public function ClassName(){
         return $this->belongsTo(ClassManagement::class,'class_id','id');
     }
+    
 }

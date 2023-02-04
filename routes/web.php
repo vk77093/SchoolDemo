@@ -26,6 +26,7 @@ use App\Http\Controllers\StudentManagement\AssignSubjectController;
 use App\Http\Controllers\StudentManagement\DesignationController;
 use App\Http\Controllers\StudentReg\AssignStudentRegController;
 use App\Http\Controllers\StudentReg\RollNumberController;
+use App\Http\Controllers\StudentReg\RegistrationFeesController;
 
 Route::get('/',[UserController::class,'GoToLoginPage'])->name('home')->middleware(['guest:'.config('fortify.guard')]);
 
@@ -135,7 +136,17 @@ Route::get('generatestudentDetails/{id}',[AssignStudentRegController::class, 'St
 //end of student registration
 Route::get('rollview',[RollNumberController::class, 'RollView'])->name('rollview.view');
 Route::post('assignrolenumber',[RollNumberController::class, 'StudentRoleStore'])->name('assignrolenumber.post');
+
+//student Registration fees Management
+Route::controller(RegistrationFeesController::class)->group(function(){
+Route::get('registrationfee/fees','RegisterationFeesView')->name('registrationfee.view');
+Route::get('registrationfee/fees/classwiseget','ClassWiseGet')->name('registrationfee.fees.classwiseget');
+Route::get('registrationfee/payslip','GeneratePaySlip')->name('student.registrationfee.payslip');
+});
+//end of student Registration fees Management
+
 }); //end of Student Prefix
+Route::get('getstudents',[RollNumberController::class, 'GetStudent'])->name('jsonfetch.getstudents');
 
 });//end of Auth Middleware
-Route::get('getstudents',[RollNumberController::class, 'GetStudent'])->name('jsonfetch.getstudents');
+

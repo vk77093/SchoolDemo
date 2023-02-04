@@ -1,7 +1,7 @@
 @extends('Admin.Backend.Layouts.adminMaster')
 @section('main')
 <x-box-comp>
-    <x-slot name="boxTitle">Add New User</x-slot>
+    <x-slot name="boxTitle">View User</x-slot>
     <x-slot name="buttonArea">
         <a class="btn btn-app btn-info" href="{{route('user.view')}}" style="float: right;">
             <i class="fa fa-eye"></i> View User

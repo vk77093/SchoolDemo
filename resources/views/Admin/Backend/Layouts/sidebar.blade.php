@@ -94,6 +94,8 @@
             <li class="{{($route=='registration.index' ? 'active' : '')}}"><a href="{{ route('registration.index') }}"><i class="ti-more"></i>Student View</a></li>
             <li class="{{($route=='registration.create' ? 'active' : '')}}"><a href="{{ route('registration.create') }}"><i class="ti-more"></i>Add Student</a></li>
             <li class="{{($route=='rollview.view' ? 'active': '')}}"><a href="{{route('rollview.view')}}"><i class="ti-more"></i>RollNumber Generate</a></li>
+            <li class="{{($route=='registrationfee.view' ? 'active': '')}}"><a href="{{route('registrationfee.view')}}"><i class="ti-more"></i>Registration Fees</a></li>
+            
           </ul>
         </li> 
          {{-- end of studentManagemet --}}
