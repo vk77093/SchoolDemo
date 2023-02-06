@@ -31,7 +31,14 @@ class RegistrationFeesController extends Controller
             $where[] = ['class_id','like',$class_id.'%'];
         }
         $allstudents = AssignStudent::with('discount')->where($where)->get();
-       
+        $html['thsource']  = '<th>SL</th>';
+        $html['thsource'] .= '<th>ID No</th>';
+        $html['thsource'] .= '<th>Student Name</th>';
+        $html['thsource'] .= '<th>Roll No</th>';
+        $html['thsource'] .= '<th>Reg Fee</th>';
+        $html['thsource'] .= '<th>Discount </th>';
+        $html['thsource'] .= '<th>Student Fee </th>';
+        $html['thsource'] .= '<th>Action</th>';
         foreach ($allstudents as $key => $v) {
             $registrationfee = FeeCategoryAmount::where('fee_cate_id','1')->where('class_id',$v->class_id)->first();
             $color = 'success';

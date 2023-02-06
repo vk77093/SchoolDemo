@@ -27,6 +27,8 @@ use App\Http\Controllers\StudentManagement\DesignationController;
 use App\Http\Controllers\StudentReg\AssignStudentRegController;
 use App\Http\Controllers\StudentReg\RollNumberController;
 use App\Http\Controllers\StudentReg\RegistrationFeesController;
+use App\Http\Controllers\StudentReg\MonthlyFeesController;
+use App\Http\Controllers\StudentReg\ExamFeesController;
 
 Route::get('/',[UserController::class,'GoToLoginPage'])->name('home')->middleware(['guest:'.config('fortify.guard')]);
 
@@ -144,6 +146,20 @@ Route::get('registrationfee/fees/classwiseget','ClassWiseGet')->name('registrati
 Route::get('registrationfee/payslip','GeneratePaySlip')->name('student.registrationfee.payslip');
 });
 //end of student Registration fees Management
+//monthly Fees Management
+Route::controller(MonthlyFeesController::class)->group(function(){
+Route::get('monthlyFees/fees','MonthlyFeesView')->name('monthlyFees.view');
+Route::get('monthlyFees/fees/classandmonthwise','ClassAndMonthWiseGet')->name('montlyfee.fees.classandmonthwiseget');
+Route::get('monthlyFees/payslip','GeneratePaySlip')->name('student.monthlyfee.payslip');
+});
+//end of monthly fees Management
+//Exam Fees Management
+Route::controller(ExamFeesController::class)->group(function(){
+    Route::get('examFees/fees','examFeesView')->name('examFees.view');
+    Route::get('examFees/fees/classandmonthwise','ClassAndMonthWiseGet')->name('examfee.fees.classandmonthwiseget');
+    Route::get('examFees/payslip','GeneratePaySlip')->name('student.examfee.payslip');
+});
+//end of Exam fees
 
 }); //end of Student Prefix
 Route::get('getstudents',[RollNumberController::class, 'GetStudent'])->name('jsonfetch.getstudents');
