@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Image;
 
+
 class EmployeeRegistrationController extends Controller
 {
     protected string $path="Admin.EmployeeManagement.EmployeeRegistration.";

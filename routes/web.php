@@ -30,6 +30,7 @@ use App\Http\Controllers\StudentReg\RegistrationFeesController;
 use App\Http\Controllers\StudentReg\MonthlyFeesController;
 use App\Http\Controllers\StudentReg\ExamFeesController;
 use App\Http\Controllers\EmployeeManagement\EmployeeSalaryController;
+use App\Http\Controllers\EmployeeManagement\EmployeeLeaveController;
 
 //employee
 use App\Http\Controllers\EmployeeManagement\EmployeeRegistrationController;
@@ -189,8 +190,19 @@ Route::get('salary/SalaryIncrement/{id}','SalaryIncrement')->name('salary.increm
 Route::get('salary/viewDetails/{id}','ViewSalaryDetails')->name('salary.viewdetails');
 // Route::post('salary/update/{id}','UpdateSalary')->name('salary.update');
 // Route::get('salary/delete/{id}','DeleteSalary')->name('salary.delete');
-});
-//end of employee Salary Controller
+}); //end of employee Salary Controller
+ 
+//Employee Leave 
+Route::controller(EmployeeLeaveController::class)->group(function(){
+Route::get('leave/view','LeaveView')->name('leave.view');
+Route::get('leave/create','CreateLeave')->name('leave.create');
+Route::post('leave/save','SaveLeave')->name('leave.save');
+Route::get('leave/edit/{id}','EditLeave')->name('leave.edit');
+Route::post('leave/update/{id}','UpdateLeave')->name('leave.update');
+Route::get('leave/delete/{id}','DeleteLeave')->name('leave.delete');
+
+});//end of Employee Leave Controller
+
 
 });
 
