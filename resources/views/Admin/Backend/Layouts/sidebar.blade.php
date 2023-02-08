@@ -115,7 +115,7 @@
           </a>
           <ul class="treeview-menu">
             <li class="{{($route==='empregistration.ViewEmpRegis' ? 'active' : '')}}" ><a href="{{ route('empregistration.ViewEmpRegis') }}"><i class="ti-more"></i>Employee Registration</a></li>
-            <li><a href="components_badges.html"><i class="ti-more"></i>Badge</a></li>
+            <li class="{{ $route==='salary.view' ?'active' :'' }}"><a href="{{ route('salary.view') }}"><i class="ti-more"></i>Manage Salary</a></li>
             <li><a href="components_buttons.html"><i class="ti-more"></i>Buttons</a></li>
             <li><a href="components_sliders.html"><i class="ti-more"></i>Sliders</a></li>
             <li><a href="components_dropdown.html"><i class="ti-more"></i>Dropdown</a></li>

@@ -29,6 +29,7 @@ use App\Http\Controllers\StudentReg\RollNumberController;
 use App\Http\Controllers\StudentReg\RegistrationFeesController;
 use App\Http\Controllers\StudentReg\MonthlyFeesController;
 use App\Http\Controllers\StudentReg\ExamFeesController;
+use App\Http\Controllers\EmployeeManagement\EmployeeSalaryController;
 
 //employee
 use App\Http\Controllers\EmployeeManagement\EmployeeRegistrationController;
@@ -169,6 +170,7 @@ Route::get('getstudents',[RollNumberController::class, 'GetStudent'])->name('jso
 
 //Employee Management Prefix
 Route::prefix('employeeManagement')->group(function(){
+    //Employee Registration 
 Route::controller(EmployeeRegistrationController::class)->group(function(){
 Route::get('emp/registration','ViewEmpRegis')->name('empregistration.ViewEmpRegis');
 Route::get('emp/create','CreateEmp')->name('empregistration.create');
@@ -177,7 +179,18 @@ Route::get('emp/edit/{id}','EditEmployee')->name('empregistration.edit');
 Route::post('emp/update/{id}','UpdateEmployee')->name('empregistration.update');
 Route::get('emp/delete/{id}','DeleteEmployee')->name('empregistration.delete');
 Route::get('emp/viewpdf/{id}','viewPdf')->name('empregistration.viewPdf');
+}); //end of employee Registration
+
+//Employee Salary Controller
+Route::controller(EmployeeSalaryController::class)->group(function(){
+Route::get('salary/view','ViewSalary')->name('salary.view');
+Route::post('salary/SalaryIncrementpost/{id}','SalaryIncrementSave')->name('salary.incrementpost');
+Route::get('salary/SalaryIncrement/{id}','SalaryIncrement')->name('salary.increment');
+Route::get('salary/viewDetails/{id}','ViewSalaryDetails')->name('salary.viewdetails');
+// Route::post('salary/update/{id}','UpdateSalary')->name('salary.update');
+// Route::get('salary/delete/{id}','DeleteSalary')->name('salary.delete');
 });
+//end of employee Salary Controller
 
 });
 
