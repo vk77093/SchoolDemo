@@ -30,6 +30,9 @@ use App\Http\Controllers\StudentReg\RegistrationFeesController;
 use App\Http\Controllers\StudentReg\MonthlyFeesController;
 use App\Http\Controllers\StudentReg\ExamFeesController;
 
+//employee
+use App\Http\Controllers\EmployeeManagement\EmployeeRegistrationController;
+
 Route::get('/',[UserController::class,'GoToLoginPage'])->name('home')->middleware(['guest:'.config('fortify.guard')]);
 
 Route::middleware([
@@ -163,6 +166,22 @@ Route::controller(ExamFeesController::class)->group(function(){
 
 }); //end of Student Prefix
 Route::get('getstudents',[RollNumberController::class, 'GetStudent'])->name('jsonfetch.getstudents');
+
+//Employee Management Prefix
+Route::prefix('employeeManagement')->group(function(){
+Route::controller(EmployeeRegistrationController::class)->group(function(){
+Route::get('emp/registration','ViewEmpRegis')->name('empregistration.ViewEmpRegis');
+Route::get('emp/create','CreateEmp')->name('empregistration.create');
+Route::post('emp/createpost','AddEmployee')->name('empregistration.createpost');
+Route::get('emp/edit/{id}','EditEmployee')->name('empregistration.edit');
+Route::post('emp/update/{id}','UpdateEmployee')->name('empregistration.update');
+Route::get('emp/delete/{id}','DeleteEmployee')->name('empregistration.delete');
+Route::get('emp/viewpdf/{id}','viewPdf')->name('empregistration.viewPdf');
+});
+
+});
+
+//end of Employee Management Prefix
 
 });//end of Auth Middleware
 

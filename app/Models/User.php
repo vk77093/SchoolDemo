@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\StudentManagement\Designation;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -61,4 +62,7 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+    public function DesignationName() {
+        return $this->belongsTo(Designation::class,'designation_id','id');
+    }
 }

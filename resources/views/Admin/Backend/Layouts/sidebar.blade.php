@@ -103,18 +103,18 @@
           </ul>
         </li> 
          {{-- end of studentManagemet --}}
-        <li class="header nav-small-cap">User Interface</li>
+        <li class="header nav-small-cap">Payrools</li>
 		  
-        <li class="treeview">
+        <li class="treeview {{($prefix==='/employeeManagement' ? 'active' : '')}}">
           <a href="#">
             <i data-feather="grid"></i>
-            <span>Components</span>
+            <span>Employee Management</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="components_alerts.html"><i class="ti-more"></i>Alerts</a></li>
+            <li class="{{($route==='empregistration.ViewEmpRegis' ? 'active' : '')}}" ><a href="{{ route('empregistration.ViewEmpRegis') }}"><i class="ti-more"></i>Employee Registration</a></li>
             <li><a href="components_badges.html"><i class="ti-more"></i>Badge</a></li>
             <li><a href="components_buttons.html"><i class="ti-more"></i>Buttons</a></li>
             <li><a href="components_sliders.html"><i class="ti-more"></i>Sliders</a></li>

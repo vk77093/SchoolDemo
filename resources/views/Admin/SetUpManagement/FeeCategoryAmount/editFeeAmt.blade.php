@@ -27,7 +27,7 @@
       @endforeach	 
       </select>
    </div>
-        </div> <!-- // end form group -->
+</div> <!-- // end form group -->
 
 
 @foreach($feecateamt as $edit)

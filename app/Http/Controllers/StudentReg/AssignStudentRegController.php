@@ -14,7 +14,7 @@ use App\Models\StudentReg\Discount;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Image;
-use PDF;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class AssignStudentRegController extends Controller
 {
@@ -275,7 +275,7 @@ $discount->save();
     public function StudentDetailsPDF($stu_id){
         $data['details']=AssignStudent::with(['UserName','discount'])->where('stu_id',$stu_id)->first();
        // dd($data['details']->toArray());
-        $pdf=PDF::loadView($this->path.'studentDetails',$data);
+        $pdf=Pdf::loadView($this->path.'studentDetails',$data);
         //$pdf->SetProtection(['copy', 'print'], '', 'pass');
         //return $pdf->download('studentdocs.pdf');
         return $pdf->setPaper('a4')->stream();
