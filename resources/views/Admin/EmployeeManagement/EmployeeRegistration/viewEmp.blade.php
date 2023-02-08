@@ -24,6 +24,7 @@
                 <th>Delete</th>
             </x-slot>
             @foreach ($employees as $emp)
+            <tr>
                 <td>{{$loop->iteration}}</td>
                 <td>{{$emp->name}}</td>
                 <td>{{$emp->stu_IdNumber}}</td>
@@ -44,6 +45,7 @@
                 <td><a title="View PDF" href="{{route('empregistration.viewPdf',$emp->id)}}" class="btn btn-danger"><i class="fa fa-eye"></i></a>
                     </td>
                     <td><a title="Delete Employee" href="{{route('empregistration.delete',$emp->id)}}" class="btn btn-danger" id="delete"><i class="mdi mdi-delete"></i></a></td>
+                </tr>
             @endforeach
         </x-data-table-comp>
     </div>

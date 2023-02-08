@@ -117,11 +117,8 @@
             <li class="{{($route==='empregistration.ViewEmpRegis' ? 'active' : '')}}" ><a href="{{ route('empregistration.ViewEmpRegis') }}"><i class="ti-more"></i>Employee Registration</a></li>
             <li class="{{ $route==='salary.view' ?'active' :'' }}"><a href="{{ route('salary.view') }}"><i class="ti-more"></i>Manage Salary</a></li>
             <li class="{{$route==='leave.view' ? 'active' : ''}}"><a href="{{ route('leave.view') }}"><i class="ti-more"></i>Leave Management</a></li>
-            <li><a href="components_sliders.html"><i class="ti-more"></i>Sliders</a></li>
-            <li><a href="components_dropdown.html"><i class="ti-more"></i>Dropdown</a></li>
-            <li><a href="components_modals.html"><i class="ti-more"></i>Modal</a></li>
-            <li><a href="components_nestable.html"><i class="ti-more"></i>Nestable</a></li>
-            <li><a href="components_progress_bars.html"><i class="ti-more"></i>Progress Bars</a></li>
+            <li class="{{$route==="attendence.view" ? 'active' :''}}"><a href="{{ route('attendence.view') }}"><i class="ti-more"></i>Employee Attendence</a></li>
+            
           </ul>
         </li>
 		

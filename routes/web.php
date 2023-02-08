@@ -31,6 +31,7 @@ use App\Http\Controllers\StudentReg\MonthlyFeesController;
 use App\Http\Controllers\StudentReg\ExamFeesController;
 use App\Http\Controllers\EmployeeManagement\EmployeeSalaryController;
 use App\Http\Controllers\EmployeeManagement\EmployeeLeaveController;
+use App\Http\Controllers\EmployeeManagement\EmployeeAttendenceController;
 
 //employee
 use App\Http\Controllers\EmployeeManagement\EmployeeRegistrationController;
@@ -203,6 +204,16 @@ Route::get('leave/delete/{id}','DeleteLeave')->name('leave.delete');
 
 });//end of Employee Leave Controller
 
+//Employee Attendence
+Route::controller(EmployeeAttendenceController::class)->group(function(){
+Route::get('attendence/view','AttendenceView')->name('attendence.view');
+Route::get('attendence/create','AttendenceCreate')->name('attendence.create');
+Route::post('attendence/save','AttendenceSave')->name('attendence.save');
+Route::get('attendence/edit/{attendence_date}','AttendenceEdit')->name('attendence.edit');
+Route::get('attendence/details/{attendence_date}','AttendenceDetails')->name('attendence.details');
+Route::get('attendence/delete/{attendence_date}','AttendenceDelete')->name('attendence.delete');
+Route::post('attendence/update/{attendence_date}','AttendenceUpdate')->name('attendence.update');
+}); //end of Employee Attendence
 
 });
 
