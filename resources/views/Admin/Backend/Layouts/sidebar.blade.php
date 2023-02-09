@@ -118,7 +118,7 @@
             <li class="{{ $route==='salary.view' ?'active' :'' }}"><a href="{{ route('salary.view') }}"><i class="ti-more"></i>Manage Salary</a></li>
             <li class="{{$route==='leave.view' ? 'active' : ''}}"><a href="{{ route('leave.view') }}"><i class="ti-more"></i>Leave Management</a></li>
             <li class="{{$route==="attendence.view" ? 'active' :''}}"><a href="{{ route('attendence.view') }}"><i class="ti-more"></i>Employee Attendence</a></li>
-            
+            <li class="{{($route==='monthlysalary.view') ? 'active' : ''}}"><a href="{{ route('monthlysalary.view') }}"><i class="ti-more"></i>Employee Monthly Salary</a></li>
           </ul>
         </li>
 		

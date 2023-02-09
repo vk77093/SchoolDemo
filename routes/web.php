@@ -29,12 +29,14 @@ use App\Http\Controllers\StudentReg\RollNumberController;
 use App\Http\Controllers\StudentReg\RegistrationFeesController;
 use App\Http\Controllers\StudentReg\MonthlyFeesController;
 use App\Http\Controllers\StudentReg\ExamFeesController;
+//employee Payrool
+use App\Http\Controllers\EmployeeManagement\EmployeeRegistrationController;
 use App\Http\Controllers\EmployeeManagement\EmployeeSalaryController;
 use App\Http\Controllers\EmployeeManagement\EmployeeLeaveController;
 use App\Http\Controllers\EmployeeManagement\EmployeeAttendenceController;
+use App\Http\Controllers\EmployeeManagement\EmployeeMontlySalaryController;
 
-//employee
-use App\Http\Controllers\EmployeeManagement\EmployeeRegistrationController;
+
 
 Route::get('/',[UserController::class,'GoToLoginPage'])->name('home')->middleware(['guest:'.config('fortify.guard')]);
 
@@ -215,9 +217,16 @@ Route::get('attendence/delete/{attendence_date}','AttendenceDelete')->name('atte
 Route::post('attendence/update/{attendence_date}','AttendenceUpdate')->name('attendence.update');
 }); //end of Employee Attendence
 
-});
+//EMployee Monthly Salary Controller
+Route::controller(EmployeeMontlySalaryController::class)->group(function(){
+Route::get('monthlysalary/view','ViewMonthlySalary')->name('monthlysalary.view');
+Route::get('montlysalary/get','MonthlySalaryGet')->name('monthlysalary.get');
+Route::get('monthlysalary/payslip/{empid}','MonthlySalaryPayslip')->name('monthlysalary.payslip');
+}); //end of EmployeeMonthlySalaryController
 
-//end of Employee Management Prefix
+}); //end of Employee Management Prefix
+
+
 
 });//end of Auth Middleware
 
