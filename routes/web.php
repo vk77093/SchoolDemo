@@ -38,6 +38,7 @@ use App\Http\Controllers\EmployeeManagement\EmployeeMontlySalaryController;
 
 //Marks Management
 use App\Http\Controllers\MarksManagement\MarkMangementContoller;
+use App\Http\Controllers\MarksManagement\MarksGradeController;
 
 
 
@@ -241,6 +242,17 @@ Route::get('studentmarksedit','EditStudentMarks')->name('marks.edit');
 Route::get('getstudentmarks','GetPreviousStudentMarks')->name('marks.getmarksjson'); //json route
 Route::post('updatedstudentmarks','UpdateStudentMarks')->name('marks.update');
 }); //end of Marks Controller
+
+//Grade Controller
+Route::controller(MarksGradeController::class)->group(function(){
+Route::get('grade/view','ViewGrade')->name('grade.view');
+Route::get('grade/create','CreateGrade')->name('grade.create');
+Route::get('grade/edit/{id}','EditGrade')->name('grade.edit');
+Route::post('grade/save','SaveGrade')->name('grade.save');
+Route::post('grade/update/{id}','UpdateGrade')->name('grade.update');
+Route::get('grade/delete/{id}','DeleteGrade')->name('grade.delete');
+});
+//end of Grade Controller
 
 });
 //end of Marks Management prefix

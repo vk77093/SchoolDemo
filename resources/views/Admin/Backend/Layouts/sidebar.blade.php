@@ -115,12 +115,13 @@
           <ul class="treeview-menu">
 			<li class="{{($route=='marks.addmarks' ?'active':'')}}"><a href="{{ route('marks.addmarks') }}"><i class="ti-more"></i>Add Marks</a></li>
 			<li class="{{($route=='marks.edit' ?'active':'')}}"><a href="{{ route('marks.edit') }}"><i class="ti-more"></i>Edit Marks</a></li>
-			<li><a href="card_color.html"><i class="ti-more"></i>Cards Color</a></li>
+      <li class="{{($route=='grade.view' ?'active':'')}}"><a href="{{ route('grade.view') }}"><i class="ti-more"></i>Manage Grade</a></li>
+			
 		  </ul>
         </li> 
         <!--end of Marks Management--->
 
-        <li class="header nav-small-cap">Payrools</li>
+        <li class="header nav-small-cap">Accounts Section</li>
 		  
         <li class="treeview {{($prefix==='/employeeManagement' ? 'active' : '')}}">
           <a href="#">
@@ -140,32 +141,33 @@
         </li>
 		
 		 
-		  
-        <li class="treeview">
+		  <!--account Management-->
+        <li class="treeview" class="{{($prefix=='/account' ? 'active' : '')}}">
           <a href="#">
             <i data-feather="hard-drive"></i>
-            <span>Content</span>
+            <span>Account Management</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="content_typography.html"><i class="ti-more"></i>Typography</a></li>
-            <li><a href="content_media.html"><i class="ti-more"></i>Media</a></li>
-            <li><a href="content_grid.html"><i class="ti-more"></i>Grid</a></li>
+            <li><a href="content_typography.html"><i class="ti-more"></i>Srudent Fees</a></li>
+            <li><a href="content_media.html"><i class="ti-more"></i>Employee Salary</a></li>
+            <li><a href="content_grid.html"><i class="ti-more"></i>Others Cost</a></li>
           </ul>
         </li>
-		  
+		  <!--End of account Management-->
+      <li class="header nav-small-cap">Reports Section</li>
         <li class="treeview">
           <a href="#">
             <i data-feather="package"></i>
-            <span>Utilities</span>
+            <span>Reports Management</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="utilities_border.html"><i class="ti-more"></i>Border</a></li>
+            <li><a href="utilities_border.html"><i class="ti-more"></i>Monthly/Yearly Profit</a></li>
             <li><a href="utilities_color.html"><i class="ti-more"></i>Color</a></li>
             <li><a href="utilities_ribbons.html"><i class="ti-more"></i>Ribbons</a></li>
             <li><a href="utilities_tab.html"><i class="ti-more"></i>Tabs</a></li>
