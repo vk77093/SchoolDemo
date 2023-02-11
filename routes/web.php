@@ -36,6 +36,9 @@ use App\Http\Controllers\EmployeeManagement\EmployeeLeaveController;
 use App\Http\Controllers\EmployeeManagement\EmployeeAttendenceController;
 use App\Http\Controllers\EmployeeManagement\EmployeeMontlySalaryController;
 
+//Marks Management
+use App\Http\Controllers\MarksManagement\MarkMangementContoller;
+
 
 
 Route::get('/',[UserController::class,'GoToLoginPage'])->name('home')->middleware(['guest:'.config('fortify.guard')]);
@@ -225,6 +228,22 @@ Route::get('monthlysalary/payslip/{empid}','MonthlySalaryPayslip')->name('monthl
 }); //end of EmployeeMonthlySalaryController
 
 }); //end of Employee Management Prefix
+
+//Marks Management Prefix
+Route::prefix('marks')->group(function(){
+//Marks Controller
+Route::controller(MarkMangementContoller::class)->group(function(){
+Route::get('addmarks','AddMarks')->name('marks.addmarks');
+Route::get('getsubject','GetSubjectJson')->name('marks.getsubjectjson'); //jsonroute
+Route::get('getstudentjson','GetStudentJson')->name('marks.getstudentjson');//json route
+Route::post('savestudentMarks','SaveStudentMarks')->name('marks.save');
+Route::get('studentmarksedit','EditStudentMarks')->name('marks.edit');
+Route::get('getstudentmarks','GetPreviousStudentMarks')->name('marks.getmarksjson'); //json route
+Route::post('updatedstudentmarks','UpdateStudentMarks')->name('marks.update');
+}); //end of Marks Controller
+
+});
+//end of Marks Management prefix
 
 
 

@@ -103,6 +103,23 @@
           </ul>
         </li> 
          {{-- end of studentManagemet --}}
+         <!--Marks Management--->
+         <li class="treeview {{($prefix=='/marks' ? 'active' : '')}}" >
+          <a href="#">
+            <i data-feather="credit-card"></i>
+            <span>Marks Management</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+			<li class="{{($route=='marks.addmarks' ?'active':'')}}"><a href="{{ route('marks.addmarks') }}"><i class="ti-more"></i>Add Marks</a></li>
+			<li class="{{($route=='marks.edit' ?'active':'')}}"><a href="{{ route('marks.edit') }}"><i class="ti-more"></i>Edit Marks</a></li>
+			<li><a href="card_color.html"><i class="ti-more"></i>Cards Color</a></li>
+		  </ul>
+        </li> 
+        <!--end of Marks Management--->
+
         <li class="header nav-small-cap">Payrools</li>
 		  
         <li class="treeview {{($prefix==='/employeeManagement' ? 'active' : '')}}">
@@ -122,20 +139,7 @@
           </ul>
         </li>
 		
-		<li class="treeview">
-          <a href="#">
-            <i data-feather="credit-card"></i>
-            <span>Cards</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-right pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-			<li><a href="card_advanced.html"><i class="ti-more"></i>Advanced Cards</a></li>
-			<li><a href="card_basic.html"><i class="ti-more"></i>Basic Cards</a></li>
-			<li><a href="card_color.html"><i class="ti-more"></i>Cards Color</a></li>
-		  </ul>
-        </li>  
+		 
 		  
         <li class="treeview">
           <a href="#">

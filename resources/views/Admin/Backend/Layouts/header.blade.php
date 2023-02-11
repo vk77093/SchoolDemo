@@ -6,7 +6,7 @@
 	  <div>
 		  <ul class="nav">
 			<li class="btn-group nav-item">
-				<a href="#" class="waves-effect waves-light nav-link rounded svg-bt-icon" data-toggle="push-menu" role="button">
+				<a href="#" title="CollapseWindow" class="waves-effect waves-light nav-link rounded svg-bt-icon" data-toggle="push-menu" role="button">
 					<i class="nav-link-icon mdi mdi-menu"></i>
 			    </a>
 			</li>
