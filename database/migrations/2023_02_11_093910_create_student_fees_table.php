@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('student_fees', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('year_id')->constrained('years');
+            $table->foreignId('class_id')->constrained('class_management');
+            $table->foreignId('stu_id')->constrained('users');
+            $table->foreignId('fee_cate_id')->constrained('fee_categories');
+            $table->string('fee_date');
+            $table->double('fee_amount');
             $table->timestamps();
         });
     }

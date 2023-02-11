@@ -142,7 +142,7 @@
 		
 		 
 		  <!--account Management-->
-        <li class="treeview" class="{{($prefix=='/account' ? 'active' : '')}}">
+      <li class="treeview {{($prefix==='/account' ? 'active' : '')}}">
           <a href="#">
             <i data-feather="hard-drive"></i>
             <span>Account Management</span>
@@ -151,7 +151,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="content_typography.html"><i class="ti-more"></i>Srudent Fees</a></li>
+            <li class="{{$route=='fees.view' ? 'active' : ''}}"><a href="{{ route('fees.view') }}"><i class="ti-more"></i>Srudent Fees</a></li>
             <li><a href="content_media.html"><i class="ti-more"></i>Employee Salary</a></li>
             <li><a href="content_grid.html"><i class="ti-more"></i>Others Cost</a></li>
           </ul>

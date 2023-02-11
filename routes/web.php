@@ -40,6 +40,9 @@ use App\Http\Controllers\EmployeeManagement\EmployeeMontlySalaryController;
 use App\Http\Controllers\MarksManagement\MarkMangementContoller;
 use App\Http\Controllers\MarksManagement\MarksGradeController;
 
+//Account Management
+use App\Http\Controllers\AccountManagement\StudentFeeController;
+
 
 
 Route::get('/',[UserController::class,'GoToLoginPage'])->name('home')->middleware(['guest:'.config('fortify.guard')]);
@@ -256,6 +259,21 @@ Route::get('grade/delete/{id}','DeleteGrade')->name('grade.delete');
 
 });
 //end of Marks Management prefix
+
+//Account Managemet Prefix
+Route::prefix('account')->group(function(){
+//StudentFee Management Controller
+Route::controller(StudentFeeController::class)->group(function(){
+Route::get('fees/view','StudentFeesView')->name('fees.view');
+Route::get('fees/create','StudentFeesCreate')->name('fees.create');
+Route::get('fees/edit/{id}','StudentFeesEdit')->name('fees.edit');
+Route::get('fees/delete/{id}','StudentFeesDelete')->name('fees.delete');
+Route::post('fees/save','SaveFeesData')->name('fees.save');
+Route::get('fees/getstudentjson','GetStudentJson')->name('account.fees.getstudentjosn');
+});
+//end of Student Fee Controller
+});
+//end of Account Management prefix
 
 
 
