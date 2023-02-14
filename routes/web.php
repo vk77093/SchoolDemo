@@ -42,6 +42,7 @@ use App\Http\Controllers\MarksManagement\MarksGradeController;
 
 //Account Management
 use App\Http\Controllers\AccountManagement\StudentFeeController;
+use App\Http\Controllers\AccountManagement\AccountSalaryController;
 
 
 
@@ -272,6 +273,17 @@ Route::post('fees/save','SaveFeesData')->name('fees.save');
 Route::get('fees/getstudentjson','GetStudentJson')->name('account.fees.getstudentjosn');
 });
 //end of Student Fee Controller
+
+//Account Salary Controller
+Route::controller(AccountSalaryController::class)->group(function(){
+Route::get('empsalary/view','EmployeeSalaryView')->name('acc.empsalary.view');
+Route::get('empsalary/add/edit','EmployeeSalaryAddEdit')->name('acc.empsalary.addedit');
+Route::get('empsalary/delete/{id}','EmployeeSalaryDelete')->name('acc.empsalary.delete');
+Route::post('empsalary/save','EmployeeSalarySave')->name('acc.empsalary.save');
+Route::get('empsalary/getemployee','GetEmployeeSalaryJosn')->name('acc.empsalary.getemployeejosn');
+});
+//End of Account Salary Controller
+
 });
 //end of Account Management prefix
 
