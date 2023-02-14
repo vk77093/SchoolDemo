@@ -153,7 +153,7 @@
           <ul class="treeview-menu">
             <li class="{{$route=='fees.view' ? 'active' : ''}}"><a href="{{ route('fees.view') }}"><i class="ti-more"></i>Srudent Fees</a></li>
             <li class="{{$route==='acc.empsalary.view' ? 'active' : ''}}"><a href="{{ route('acc.empsalary.view') }}"><i class="ti-more"></i>Employee Salary</a></li>
-            <li><a href="content_grid.html"><i class="ti-more"></i>Others Cost</a></li>
+            <li class="{{$route=="cost.view" ?'active' :''}}"><a href="{{ route('cost.view') }}"><i class="ti-more"></i>Others Cost</a></li>
           </ul>
         </li>
 		  <!--End of account Management-->

@@ -43,6 +43,7 @@ use App\Http\Controllers\MarksManagement\MarksGradeController;
 //Account Management
 use App\Http\Controllers\AccountManagement\StudentFeeController;
 use App\Http\Controllers\AccountManagement\AccountSalaryController;
+use App\Http\Controllers\AccountManagement\OtherCostController;
 
 
 
@@ -283,6 +284,16 @@ Route::post('empsalary/save','EmployeeSalarySave')->name('acc.empsalary.save');
 Route::get('empsalary/getemployee','GetEmployeeSalaryJosn')->name('acc.empsalary.getemployeejosn');
 });
 //End of Account Salary Controller
+//Other Cost conttoller
+Route::controller(OtherCostController::class)->group(function(){
+Route::get('cost/view','ViewCost')->name('cost.view');
+Route::get('cost/create','CreateCost')->name('cost.create');
+Route::post('cost/save','SaveCost')->name('cost.save');
+Route::get('cost/edit/{id}','EditCost')->name('cost.edit');
+Route::post('cost/update/{id}','UpdateCost')->name('cost.update');
+Route::get('cost/delete/{id}','DeleteCost')->name('cost.delete');
+});
+//end of other Controller
 
 });
 //end of Account Management prefix
