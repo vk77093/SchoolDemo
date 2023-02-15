@@ -47,6 +47,7 @@ use App\Http\Controllers\AccountManagement\OtherCostController;
 
 //Reports Generation
 use App\Http\Controllers\ReportsManagment\ProfitController;
+use App\Http\Controllers\ReportsManagment\MarkSheetController;
 
 
 
@@ -303,11 +304,21 @@ Route::get('cost/delete/{id}','DeleteCost')->name('cost.delete');
 
 //Reports Management Prefix
 Route::prefix('reports')->group(function(){
+    //Profit Controller
 Route::controller(ProfitController::class)->group(function(){
 Route::get('montly-yearly-profit/view','ViewmontlyYearlyProfit')->name('profit.view');
 Route::get('montly-yearly-profit/datewisejson','GetProfitDataDateWise')->name('profit.datewisegetjson');
 Route::get('monthly-yearly-profiy/pdf','ViewPdfReport')->name('report.profit.pdf');
+}); //end of Profit Controller
+
+//Marksheet Controller
+Route::controller(MarkSheetController::class)->group(function(){
+Route::get('marksheet/view','MarkSheetView')->name('marksheet.view');
+Route::get('marksheet/getpdf','MarkSheetPdf')->name('marksheet.get');
 });
+//end of MarkSheet Controller 
+
+
 });
 //end of Report Management prefix
 
