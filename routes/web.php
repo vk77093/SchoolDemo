@@ -45,6 +45,9 @@ use App\Http\Controllers\AccountManagement\StudentFeeController;
 use App\Http\Controllers\AccountManagement\AccountSalaryController;
 use App\Http\Controllers\AccountManagement\OtherCostController;
 
+//Reports Generation
+use App\Http\Controllers\ReportsManagment\ProfitController;
+
 
 
 Route::get('/',[UserController::class,'GoToLoginPage'])->name('home')->middleware(['guest:'.config('fortify.guard')]);
@@ -297,6 +300,17 @@ Route::get('cost/delete/{id}','DeleteCost')->name('cost.delete');
 
 });
 //end of Account Management prefix
+
+//Reports Management Prefix
+Route::prefix('reports')->group(function(){
+Route::controller(ProfitController::class)->group(function(){
+Route::get('montly-yearly-profit/view','ViewmontlyYearlyProfit')->name('profit.view');
+Route::get('montly-yearly-profit/datewisejson','GetProfitDataDateWise')->name('profit.datewisegetjson');
+Route::get('monthly-yearly-profiy/pdf','ViewPdfReport')->name('report.profit.pdf');
+});
+});
+//end of Report Management prefix
+
 
 
 
