@@ -329,6 +329,10 @@ Route::get('attendance/getpdf','GetAttendanceReportPDF')->name('att.getpdf');
 Route::controller(ResultReportController::class)->group(function(){
 Route::get('result/view','ViewStudentResults')->name('result.view');
 Route::get('result/getpdf','GetStudentResultsPdf')->name('result.getpdf');
+
+//for Id Card
+Route::get('idcard/view','StudentIdCardView')->name('idcard.view');
+Route::get('idcard/getpdf','StudentIdCardGetPdf')->name('idcard.getpdf');
 });
 //end of result report controller
 });

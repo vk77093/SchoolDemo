@@ -8,12 +8,14 @@ use App\Models\MarksManagement\StudentMarks;
 use App\Models\StudentManagement\ClassManagement;
 use App\Models\StudentManagement\ExamType;
 use App\Models\StudentManagement\Year;
+use App\Models\StudentReg\AssignStudent;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
 class ResultReportController extends Controller
 {
     protected string $path="Admin.ReportsManagment.Results.";
+    protected string $path2="Admin.ReportsManagment.IdCards.";
     protected object $noti;
     public function __construct(){
         $this->noti = new NotificationHelper();
@@ -54,6 +56,23 @@ class ResultReportController extends Controller
         $data['title_page']="View Student Id Card";
         $data['years']=Year::latest()->get();
         $data['classes']=ClassManagement::latest()->get();
-        return view($this->path.'viewIdCard',$data);
+        return view($this->path2.'viewIdCard',$data);
+    }
+    public function StudentIdCardGetPdf(Request $request){
+        $year_id = $request->year_id;
+    	$class_id = $request->class_id;
+        if($year_id !=null && $class_id !=null){
+            $where[]=['year_id',$year_id];
+            $where[]=['class_id',$class_id];
+            $checkData=AssignStudent::where($where)->first();
+            if($checkData==true){
+                $data['allData']=AssignStudent::where($where)->get();
+                $pdf=Pdf::loadView($this->path2.'IdCardPdf',$data);
+                return $pdf->setPaper('a4')->stream('StudentIdCard.pdf');
+            }else{
+                $dataNoti=$this->noti->ShowNotification('Sorry No Data Is Found','error');
+               return redirect()->back()->with($dataNoti);
+            }
+        }
     }
 }

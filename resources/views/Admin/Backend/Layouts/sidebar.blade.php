@@ -171,7 +171,7 @@
             <li class="{{$route=='marksheet.view' ? 'active' :''}}"><a href="{{ route('marksheet.view') }}"><i class="ti-more"></i>Generate Marksheet</a></li>
             <li class="{{$route=='att.view' ?'active' :''}}"><a href="{{route('att.view')}}"><i class="ti-more"></i>Employee Attendance</a></li>
             <li class="{{$route==='result.view' ? 'active' : ''}}"><a href="{{ route('result.view') }}"><i class="ti-more"></i>Student Result</a></li>
-            <li><a href="utilities_animations.html"><i class="ti-more"></i>Animation</a></li>
+            <li class="{{$route=='idcard.view' ? 'active' : ''}}"><a href="{{ route('idcard.view') }}"><i class="ti-more"></i>Student Id Card</a></li>
           </ul>
         </li>
 		<li class="header nav-small-cap">EXTRA</li>		  
