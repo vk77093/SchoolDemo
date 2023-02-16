@@ -64,7 +64,7 @@ Route::middleware([
 });
 
 Route::get('/logout',[UserController::class,'LogoutUser'])->name('user.logout');
-Route::middleware('auth:sanctum')->group(function(){
+Route::middleware('auth:sanctum','back-button-prevent')->group(function(){
 //User Manager Route
 Route::prefix('user')->group(function(){
 Route::controller(UserController::class)->group(function(){
