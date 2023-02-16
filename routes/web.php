@@ -48,6 +48,8 @@ use App\Http\Controllers\AccountManagement\OtherCostController;
 //Reports Generation
 use App\Http\Controllers\ReportsManagment\ProfitController;
 use App\Http\Controllers\ReportsManagment\MarkSheetController;
+use App\Http\Controllers\ReportsManagment\AttendanceReportController;
+use App\Http\Controllers\ReportsManagment\ResultReportController;
 
 
 
@@ -317,8 +319,18 @@ Route::get('marksheet/view','MarkSheetView')->name('marksheet.view');
 Route::get('marksheet/getpdf','MarkSheetPdf')->name('marksheet.get');
 });
 //end of MarkSheet Controller 
-
-
+//Attendance Report Controller 
+Route::controller(AttendanceReportController::class)->group(function(){
+Route::get('attendance/view','ViewAttendanceReport')->name('att.view');
+Route::get('attendance/getpdf','GetAttendanceReportPDF')->name('att.getpdf');
+});
+//end of Attendance Report Controller
+//Result report controller
+Route::controller(ResultReportController::class)->group(function(){
+Route::get('result/view','ViewStudentResults')->name('result.view');
+Route::get('result/getpdf','GetStudentResultsPdf')->name('result.getpdf');
+});
+//end of result report controller
 });
 //end of Report Management prefix
 
